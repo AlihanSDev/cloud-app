@@ -36,6 +36,7 @@ jobs:
       - name: Smoke test container
         run: |
           docker run -d --name ci-smoke -p 5002:5000 cloud-app:github-actions
+          sleep 3
           curl --fail --retry 10 --retry-delay 1 --retry-connrefused http://localhost:5002/ | grep -q "Cloud Technologies Laboratory"
           echo "✅ Container responds correctly"
 
